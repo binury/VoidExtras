@@ -1,0 +1,12 @@
+
+{
+        "info1": "Enable or disable commands here by using 1 for on, and 0 for Off",
+        "rules":true ,
+        "discord":true,
+        "echo":false ,
+        "eightball":true,
+
+        "info2": "Configure the text that the rules and discord commands show here",
+        "Rulestext": "The Owner of this dedicated server has unfortunately not set any rules or hasn't disabled the rules command, This is a default value",
+        "Discordtext":"The Owner of this dedicated server has not put a discord server here or hasn't disabled the discord command, peep this discord tho! https://discord.gg/vQghFsRh"
+}

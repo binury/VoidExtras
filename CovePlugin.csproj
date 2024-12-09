@@ -19,4 +19,8 @@
     </Reference>
   </ItemGroup>
 
+ <ItemGroup>
+    <ProjectReference Include="C:\Users\rmson\OneDrive\Desktop\College\Seperate (self-learning) Python Files\WFPlugin\WebFishingCove\Cove\Cove.csproj" />
+  </ItemGroup>
+
 </Project>
