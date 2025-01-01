@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CovePlugin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4f3dde3fc5fba3b4b70ee0ad016dfe4092acdd6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+677df32eab5ef1d93273d9e55966dab1eeb9ca36")]
 [assembly: System.Reflection.AssemblyProductAttribute("CovePlugin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CovePlugin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -20,7 +20,11 @@
   </ItemGroup>
 
  <ItemGroup>
-    <ProjectReference Include="C:\Users\rmson\OneDrive\Desktop\College\Seperate (self-learning) Python Files\WFPlugin\WebFishingCove\Cove\Cove.csproj" />
+    <ProjectReference Include="C:\Users\rmson\Desktop\VoidsExtras\WebFishingCove\Cove\Cove.csproj" />
   </ItemGroup>
+
+ <ItemGroup>
+   <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+ </ItemGroup>
 
 </Project>

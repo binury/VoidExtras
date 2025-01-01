@@ -1,33 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj": {}
+    "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj": {
+    "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj",
+        "projectUniqueName": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj",
         "projectName": "CovePlugin",
-        "projectPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj",
+        "projectPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj",
         "packagesPath": "C:\\Users\\rmson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\obj\\",
+        "outputPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj": {
-                "projectPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj"
+              "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj": {
+                "projectPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj"
               }
             }
           }
@@ -46,6 +51,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -66,22 +77,27 @@
         }
       }
     },
-    "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj": {
+    "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj",
+        "projectUniqueName": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj",
         "projectName": "Cove",
-        "projectPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj",
+        "projectPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj",
         "packagesPath": "C:\\Users\\rmson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\obj\\",
+        "outputPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

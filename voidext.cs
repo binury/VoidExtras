@@ -5,11 +5,11 @@ using Steamworks;
 using System;
 using System.Text.Json;
 using System.Runtime.CompilerServices;
+using System.Xml;
 /*
 
-    The Void's Extras 1.2, Global Release
+    The Void's Extras 1.3, Global Release
     Raviable's Network, 2024
-
 
 */
 
@@ -21,15 +21,89 @@ namespace Voidext
 
         public class CommandConf
         {
-            // FUCK YEAH! VARIABLES!
-            public Boolean Rules { get; set; }
+            // Command Configuration Variables
+            public Boolean rules { get; set; }
             public Boolean discord { get; set; }
             public Boolean echo { get; set; }
             public Boolean eightball { get; set; }
-            public string Rulestext { get; set; }
-            public string Discordtext { get; set; }
+            public string rulestext { get; set; }
+            public string discordtext { get; set; }
+            // Filter Configuration Variables
+            public string[] flaggedwords { get; set; }
+            public string filteraction { get; set; }
+            public string actionmsg { get; set; }
+            public Boolean ChatFilterToggle { get; set; }
+            public Boolean chatgpt { get; set; }
+            public string api_key { get; set; }
         }
-    
+
+        public override void onChatMessage(WFPlayer sender, string message)
+        {
+            
+            base.onChatMessage(sender, message);
+            // reading dat json tho
+            string fileName = "voidsettings.json";
+            string filterLog = "voidfilterlog.txt";
+            string jsonString = File.ReadAllText(fileName);
+            string filterString = File.ReadAllText(filterLog);
+            CommandConf commandConf = System.Text.Json.JsonSerializer.Deserialize<CommandConf>(jsonString)!;
+
+            string[] shitlist = commandConf.flaggedwords;
+            // detection
+
+            // if a chat message contains a word that the shitlist has, do the action
+            foreach (string w in shitlist)
+            {
+                if (commandConf.ChatFilterToggle==false) return;
+                if (message.Contains(w))
+                {
+                    switch(commandConf.filteraction)
+                    {
+                        case "log":
+                            using (StreamWriter wr = File.AppendText(filterLog))
+                            {
+                                wr.WriteLine("----------------------------------------" + Environment.NewLine + "Player ID: " + sender.SteamId + 
+                                Environment.NewLine + "Player Name: " + sender.Username + Environment.NewLine + "Player Message: " + message + 
+                                Environment.NewLine + "Time: " + System.DateTime.Now + Environment.NewLine + "Action Taken: " + commandConf.filteraction + Environment.NewLine + "----------------------------------------");
+                            }
+                            break;
+                        case "logwarn":
+                            SendPlayerChatMessage(sender, commandConf.actionmsg);
+                            using (StreamWriter wr = File.AppendText(filterLog))
+                            {
+                                wr.WriteLine("----------------------------------------" + Environment.NewLine + "Player ID: " + sender.SteamId + 
+                                Environment.NewLine + "Player Name: " + sender.Username + Environment.NewLine + "Player Message: " + message + 
+                                Environment.NewLine + "Time: " + System.DateTime.Now + Environment.NewLine + "Action Taken: " + commandConf.filteraction + Environment.NewLine + "----------------------------------------");
+                            }
+                            break;
+                        case "kick":
+                            using (StreamWriter wr = File.AppendText(filterLog))
+                            {
+                                wr.WriteLine("----------------------------------------" + Environment.NewLine + "Player ID: " + sender.SteamId + 
+                                Environment.NewLine + "Player Name: " + sender.Username + Environment.NewLine + "Player Message: " + message + 
+                                Environment.NewLine + "Time: " + System.DateTime.Now + Environment.NewLine + "Action Taken: " + commandConf.filteraction + Environment.NewLine + "----------------------------------------");
+                            }
+                            KickPlayer(sender);
+                            break;
+                        case "ban":
+                            using (StreamWriter wr = File.AppendText(filterLog))
+                            {
+                                wr.WriteLine("----------------------------------------" + Environment.NewLine + "Player ID: " + sender.SteamId + 
+                                Environment.NewLine + "Player Name: " + sender.Username + Environment.NewLine + "Player Message: " + message + 
+                                Environment.NewLine + "Time: " + System.DateTime.Now + Environment.NewLine + "Action Taken: " + commandConf.filteraction + Environment.NewLine + "----------------------------------------");
+                            }
+                            BanPlayer(sender);
+
+                            break;
+                    }
+                }
+            }
+
+        }
+        
+        
+        
+        // Commands function
         public override void onInit()
         {
            base.onInit();
@@ -45,23 +119,23 @@ namespace Voidext
             //Rules Command
            RegisterCommand("rules", (player, args) =>
             {
-                if (commandConf.Rules==false) return;
-                SendPlayerChatMessage(player, commandConf.Rulestext);
+                if (commandConf.rules==false) return;
+                SendPlayerChatMessage(player, commandConf.rulestext);
             });
             SetCommandDescription("rules", "Shows Rules");
 
             // Version Info Command
             RegisterCommand("versioninfo", (player, args) =>
             {
-                SendPlayerChatMessage(player, $"[VERSION 1.2] Changes Include: Magic 8 Ball Command (!8ball), Echo Command (!echo)");
+                SendPlayerChatMessage(player, $"[VERSION 1.3] Changes Include: New Chat Filter, ChatGPT Command");
             });
-            SetCommandDescription("versioninfo", "Shows VoTA's Version info, including current server changes");
+            SetCommandDescription("versioninfo", "Shows Void's Extras' Version info, including current server changes");
 
             // Discord Command
             RegisterCommand("discord", (player, args) =>
             {
                 if (commandConf.discord==false) return;
-                SendPlayerChatMessage(player, commandConf.Discordtext);
+                SendPlayerChatMessage(player, commandConf.discordtext);
             });
             SetCommandDescription("discord", "Shows the link to the discord");
             Log("We're good..?");
@@ -78,78 +152,32 @@ namespace Voidext
 
              RegisterCommand("8ball", (player, args) =>
             {
-               if (commandConf.eightball==false) return;
-               //Random number Generator
-                Random rnd = new Random();
-               int randomNum = rnd.Next(1, 20);
-                switch (randomNum) 
-                {
-                case 1:
-                   SendGlobalChatMessage($"It is certain");
-                    break;
-                case 2:
-                    SendGlobalChatMessage($"It is decidedly so");
-                    break;
-                case 3:
-                    SendGlobalChatMessage($"Without a doubt");
-                    break;
-                case 4:
-                    SendGlobalChatMessage($"Yes, definitely");
-                    break;
-                case 5:
-                    SendGlobalChatMessage($"You may rely on it");
-                    break;
-                case 6:
-                    SendGlobalChatMessage($"As I see it, yes");
-                    break;
-                case 7:
-                    SendGlobalChatMessage($"Most likely");
-                    break;
-                case 8:
-                    SendGlobalChatMessage($"Outlook good");
-                    break;
-                case 9:
-                    SendGlobalChatMessage($"Yes");
-                    break;
-                case 10:
-                    SendGlobalChatMessage($"Signs point to yes");
-                    break;
-                case 11:
-                   SendGlobalChatMessage($"Reply hazy, try again");
-                    break;
-                case 12:
-                    SendGlobalChatMessage($"Ask again later");
-                    break;
-                case 13:
-                    SendGlobalChatMessage($"Better not tell you now");
-                    break;
-                case 14:
-                    SendGlobalChatMessage($"Cannot predict now");
-                    break;
-                case 15:
-                    SendGlobalChatMessage($"Concentrate and ask again");
-                    break;
-                case 16:
-                    SendGlobalChatMessage($"Don't count on it");
-                    break;
-                case 17:
-                    SendGlobalChatMessage($"My reply is no");
-                    break;
-                case 18:
-                    SendGlobalChatMessage($"My sources say no");
-                    break;
-                case 19:
-                    SendGlobalChatMessage($"Outlook not so good");
-                    break;
-                case 20:
-                    SendGlobalChatMessage($"Very doubtful");
-                    break;
-                }
+              if (commandConf.eightball==false) return;
+              //Xe wanted to steal the 8ball idea so I copied his code redo :)
+              Random rand = new Random();
+              string[] ResponseText = {"It is certain", "It is decidedly so", "Without a doubt", "Yes, definitely", "You may rely on it", "As I see it, yes", "Most likely", 
+                                    "Outlook good", "Yes", "Signs point to yes", "Reply hazy, try again", "Ask again later", "Better not tell you now", "Cannot predict now",
+                                    "Concentrate and ask again", "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"};
+              string respmsg = ResponseText[rand.Next(ResponseText.Length)];
+              SendGlobalChatMessage(respmsg);
             });
             SetCommandDescription("8ball", "Shake the 8 Ball, get it's Opinion!");
-
+        /*          # Not Yet... #
+             RegisterCommand("chatgpt", (player, args) =>
+            {
+              if (commandConf.chatgpt==false) return;
+              
+              string query = string.Join(" ", args);
+              string key = commandConf.api_key;
+              
+              
+            });
+            SetCommandDescription("chatgpt", "Full-Blown ChatGPT implementation... Do you think I'm kidding brah? Try it!");
+        */
         }
 
     }
+
+    
 }
 

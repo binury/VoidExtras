@@ -583,6 +583,19 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Serilog/4.1.0": {
         "type": "package",
         "compile": {
@@ -1646,6 +1659,36 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Serilog/4.1.0": {
       "sha512": "u1aZI8HZ62LWlq5dZLFwm6jMax/sUwnWZSw5lkPsCt518cJBxFKoNmc7oSxe5aA5BgSkzy9rzwFGR/i/acnSPw==",
       "type": "package",
@@ -1965,36 +2008,43 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Cove >= 1.0.0"
+      "Cove >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rmson\\.nuget\\packages\\": {}
+    "C:\\Users\\rmson\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj",
+      "projectUniqueName": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj",
       "projectName": "CovePlugin",
-      "projectPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\CovePlugin.csproj",
+      "projectPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\CovePlugin.csproj",
       "packagesPath": "C:\\Users\\rmson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\TemplateCovePlugin\\obj\\",
+      "outputPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\VoidExtras\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rmson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj": {
-              "projectPath": "C:\\Users\\rmson\\OneDrive\\Desktop\\College\\Seperate (self-learning) Python Files\\WFPlugin\\WebFishingCove\\Cove\\Cove.csproj"
+            "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj": {
+              "projectPath": "C:\\Users\\rmson\\Desktop\\VoidsExtras\\WebFishingCove\\Cove\\Cove.csproj"
             }
           }
         }
@@ -2013,6 +2063,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

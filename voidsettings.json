@@ -5,8 +5,32 @@
         "discord":true,
         "echo":false ,
         "eightball":true,
-
         "info2": "Configure the text that the rules and discord commands show here",
-        "Rulestext": "The Owner of this dedicated server has unfortunately not set any rules or hasn't disabled the rules command, This is a default value",
-        "Discordtext":"The Owner of this dedicated server has not put a discord server here or hasn't disabled the discord command, peep this discord tho! https://discord.gg/vQghFsRh"
+        "rulestext": "The Owner of this dedicated server has unfortunately not set any rules or hasn't disabled the rules command, This is a default value",
+        "discordtext":"The Owner of this dedicated server has not put a discord server here or hasn't disabled the discord command, peep this discord tho! https://discord.gg/vQghFsRh",
+        
+        
+        "info3": "Void can take from this list of words and impose an action against any player who says them",
+        
+        "flaggedwords": ["daddy","Daddy", "Child Porn", "cheese pizza", "cp", "blowjob", "cunt", "e621", "gypsies", "gypsy", "hentai", "hitler", "holocaust", "horni", "horny", "killmyself", "killyourself", "kms", "kys", "nword", "ngga", "nword", "pedo", "r34", "rape", "retard", "retarded", "rule34", "suicidal", "suicide", "tranny", "wetback", "yiff", "zoophile", "zoophiles", "nigg", "fag", "faggot", "figgit", "kniger", "ngger", "nigga", "nigger"],
+
+        "info4": "You set this to log, logwarn, kick, or ban. All options will log either way and will do it to a JSON file which will output to the console",
+
+        "filteraction": "logwarn",
+
+        "info5": "all of the options are self-explanatory, but you can also set a message that is sent regardless of whether it is warning the player, kicking or banning them",
+
+        "actionmsg": "You have triggered a logging of your message due to talking about illicit topics, your actions have been noted in a log file which can easily be accessed by Administrators",
+
+        "info6": "If you really want to disable filtering, this option allows for that",
+
+        "ChatFilterToggle": true,
+
+
+        "info7": "ChatGPT is disabled by default because no API Key is provided, Void's extras may crash if this is enabled without an API Key!",
+        "chatgpt":false,
+        "info8": " V V V FOR SECURITY PURPOSES, YOU ARE REQUIRED TO PROVIDE YOUR OWN OPENAI API KEY WITH CREDITS PRELOADED ONTO IT.",
+        "api_key": "",
+        "info9": "THIS IS AN EXPERIMENTAL FEATURE WITH IT'S POTENTIAL LOOPHOLES, WHEN PROVIDING THIS KEY YOU MUST UNDERSTAND THAT YOU SHOULDN'T ALLOW FOR AUTOMATIC REFILLS IN ANY MANNER POSSIBLE AND YOU [MUST] BE ON YOUR TOES WITH SECURITY. I DO NOT KNOW IF YOU CAN LEAK JSON VALUES THROUGH WEBFISHING'S NETCODE"
+
 }
