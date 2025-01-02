@@ -129,12 +129,16 @@ namespace Voidext
         {
            base.onInit();
             // COMMAND CONFIGURATION SETUP
-        
+            ChatClient client;
            string fileName = "voidsettings.json";
             string jsonString = File.ReadAllText(fileName);
             CommandConf commandConf = System.Text.Json.JsonSerializer.Deserialize<CommandConf>(jsonString)!; 
-                
-            ChatClient client = new(model: "gpt-4o", apiKey: commandConf.api_key);
+                if (commandConf.chatgpt==false) return;
+                else
+                {
+                    client = new(model: "gpt-4o", apiKey: commandConf.api_key);
+                }
+        
 
             // Basic Commands
 
