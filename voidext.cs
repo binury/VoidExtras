@@ -5,12 +5,19 @@ using Steamworks;
 using System;
 using System.Text.Json;
 using System.Runtime.CompilerServices;
-using System.Xml;
+using System.ClientModel;
+using OpenAI.Chat;
 /*
 
     The Void's Extras 1.3, Global Release
     Raviable's Network, 2024
 
+    Credits:
+    - Initial ideas and planning done by yours truly.
+    - most commands are also done by yours truly
+    - 8ball improvements suggested by Xe
+    - ChatGPT heavily researched and implemented in by me using the OpenAI API, Some suggestions for Fixes came from Sera
+    - Various other unlisted sources were adapted and used for the word detector, but not directly copied, moreso used as examples
 */
 
 namespace Voidext
@@ -36,7 +43,9 @@ namespace Voidext
             public Boolean chatgpt { get; set; }
             public string api_key { get; set; }
         }
-
+        // ChatGPT Stuff, this was all straight up taken from the source identified within the credits.
+        
+        // Innapropriate Word Detection
         public override void onChatMessage(WFPlayer sender, string message)
         {
             
@@ -99,9 +108,21 @@ namespace Voidext
                 }
             }
 
+            
+        
         }
         
-        
+        public async void sendgptmsg(string[] array) 
+        {
+
+            for (int i = 1; i < array.Length; i++) // God this is so fucking cursed.
+            {
+                SendGlobalChatMessage(array[i]);
+                await Task.Delay(1000);
+                Log(array[i]);
+            }
+        }
+    
         
         // Commands function
         public override void onInit()
@@ -111,8 +132,9 @@ namespace Voidext
         
            string fileName = "voidsettings.json";
             string jsonString = File.ReadAllText(fileName);
-            CommandConf commandConf = JsonSerializer.Deserialize<CommandConf>(jsonString)!; 
+            CommandConf commandConf = System.Text.Json.JsonSerializer.Deserialize<CommandConf>(jsonString)!; 
                 
+            ChatClient client = new(model: "gpt-4o", apiKey: commandConf.api_key);
 
             // Basic Commands
 
@@ -162,18 +184,36 @@ namespace Voidext
               SendGlobalChatMessage(respmsg);
             });
             SetCommandDescription("8ball", "Shake the 8 Ball, get it's Opinion!");
-        /*          # Not Yet... #
+        
              RegisterCommand("chatgpt", (player, args) =>
             {
               if (commandConf.chatgpt==false) return;
-              
+            
               string query = string.Join(" ", args);
-              string key = commandConf.api_key;
-              
-              
+              ChatCompletion completion = client.CompleteChat(query);
+                
+                //Create Message array
+                if (completion.Content[0].Text.Contains('\n'))
+                {
+                    string[] mArray = completion.Content[0].Text.Split('\n');
+                    SendGlobalChatMessage($"[ChatGPT]: {mArray[0]}");
+                    if (mArray.Length > 1)
+                    {
+                        sendgptmsg(mArray);
+                    }
+                    
+                }
+                else 
+                {
+                    SendGlobalChatMessage($"[ChatGPT]: {completion.Content[0].Text}");
+                }
+                
+                Log(completion.Content[0].Text);
+                return;
+
             });
             SetCommandDescription("chatgpt", "Full-Blown ChatGPT implementation... Do you think I'm kidding brah? Try it!");
-        */
+        
         }
 
     }
