@@ -64,7 +64,8 @@ namespace Voidext
             foreach (string w in shitlist)
             {
                 if (commandConf.ChatFilterToggle==false) return;
-                if (message.Contains(w))
+                var pattern = "\b" + w + "\b";
+                if (System.Text.RegularExpressions.Regex.IsMatch(message, pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                 {
                     switch(commandConf.filteraction)
                     {
